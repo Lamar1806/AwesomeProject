@@ -1,10 +1,11 @@
 import React from 'react';
-import { Platform, StatusBar, StyleSheet, View, Text, Button } from 'react-native';
+import { Platform, StatusBar, StyleSheet, View, ScrollView, Text, Button, Dimensions } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
 import Horizontal from './components/p1_Horizontal';
 import Login from './components/p3_login';
 import ShoppingCart from './components/Shopping_Cart/p4_Shopping_Cart';
+import Instagram from './components/p_5_Instagram/Instagram'
 
 
 export default class App extends React.Component {
@@ -15,6 +16,7 @@ export default class App extends React.Component {
     return 'pressed';
   }
   render() {
+    const deviceHeight = Dimensions.get('window').height;
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
       return (
         <AppLoading
@@ -26,13 +28,17 @@ export default class App extends React.Component {
     } else {
       return (
         <View style={styles.container}> 
-          {/* <Horizontal /> */}
-          {/* <Login /> */}
-          <ShoppingCart />
+          {/* <ScrollView style={{flex: 1,height: deviceHeight}}> */}
+            {/* <Horizontal /> */}
+            {/* <Login /> */}
+            {/* <ShoppingCart /> */}
+            <Instagram />
+          {/* </ScrollView> */}
         </View>
       );
     }
   }
+
 
   _loadResourcesAsync = async () => {
     return Promise.all([
@@ -63,11 +69,11 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
+    display: 'flex',
     flex: 1,
     backgroundColor: '#000',
-    alignItems: 'flex-start',
-    // justifyContent: 'center',
-    // width: Dimensions.get('window').width,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   myText: {
     color: '#c1c1c1'

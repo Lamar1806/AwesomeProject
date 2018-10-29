@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, Image } from 'react-native'
+import { Text, View, StyleSheet, Image, Dimensions } from 'react-native'
 
 export default class Header extends Component {
     render() {
         return (
             <View style={styles.header}>
                 <Image style={styles.logo} source={require('./images/cart_icon.png')}/>
+                <Text style={styles.title}>LCO Shopping Cart</Text>
             </View>
         )
     }
@@ -13,15 +14,27 @@ export default class Header extends Component {
 
 const styles = StyleSheet.create({
     header: {
-        flexDirection: 'row', 
-        backgroundColor: 'gray',
-        alignItems: 'stretch',
-        // justifyContent: 'center',
+        backgroundColor: '#fff',
+        height: 80,
+        marginTop: 20,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 20,
+        borderBottomWidth: 4,
+        borderBottomColor: '#ccc',
+        width: Dimensions.get('window').width,
     },
-
     logo: {
         // marginTop: 50,
-        width: 32,
-        height: 32
+        width: 40,
+        height: 40,
+    },
+    title: {
+        marginLeft: 10,
+        color: '#c1c1c1',
+        fontWeight: 'bold',
+        fontSize: 15,
+        fontStyle: 'italic',
     }
 });
